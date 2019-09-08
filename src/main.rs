@@ -1,4 +1,4 @@
-use std::process::Command;
+use std::process::{Command, exit};
 use std::str;
 use std::env;
 
@@ -12,6 +12,10 @@ fn main() {
         Ok(v) => v,
         Err(e) => panic!("{:?}", e),
     };
+
+    if output == "" {
+        exit(0);
+    }
 
     let mut artist: Option<String> = None;
     let mut title: Option<String> = None;
